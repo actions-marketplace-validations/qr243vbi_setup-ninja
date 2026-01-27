@@ -43,29 +43,28 @@ export async function downloadAsBuffer(url: string): Promise<ArrayBuffer> {
   }
 }
 
-
-export async function getLatestRelease(owner: string, repo: string): Promise<string> {
-  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
+export async function getLatestRelease(
+  owner: string,
+  repo: string
+): Promise<string> {
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`
 
   try {
     const response = await fetch(apiUrl, {
       headers: {
-        'Accept': 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2022-11-28',
-        //'Authorization': `token YOUR_GITHUB_TOKEN`, // Add this line if the repo is private
-      },
-    });
+        accept: 'application/vnd.github+json'
+      }
+    })
 
     if (!response.ok) {
-      throw new Error(`GitHub API error: ${response.status}`);
+      throw new Error(`GitHub API error: ${response.status}`)
     }
 
-    const releaseData = await response.json();
-    console.log(releaseData);
-    return releaseData.tag_name || null; // or releaseData.name, depending on what you need
+    const releaseData = await response.json()
+    return releaseData.tag_name || null // or releaseData.name, depending on what you need
   } catch (error) {
-    console.error('Error fetching latest release:', error);
-    return '';
+    console.error('Error fetching latest release:', error)
+    return ''
   }
 }
 

@@ -30,15 +30,15 @@ import path from 'path'
 
 async function run(): Promise<void> {
   try {
-    const ninjaVersion: string = core.getInput('version', {required: false})
+    let ninjaVersion: string = core.getInput('version', {required: false})
     const ninjaDest: string = core.getInput('dest')
     const ninjaPlatform: string = util.getPlatform(
       core.getInput('platform'),
       core.getInput('arch')
     )
     if (!ninjaPlatform) throw Error('Unsupported Platform')
-    if (ninjaVersion === 'generic'){
-      ninjaVersion = util.getLatestRelease('ninja-build', 'ninja');
+    if (ninjaVersion === 'generic') {
+      ninjaVersion = await util.getLatestRelease('ninja-build', 'ninja')
     } else {
       ninjaVersion = `v${ninjaVersion}`
     }

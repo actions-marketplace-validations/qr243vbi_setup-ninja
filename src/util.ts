@@ -26,7 +26,6 @@ import fetch from 'node-fetch'
 
 export const IS_WIN: boolean = process.platform === 'win32'
 export const IS_LINUX: boolean = process.platform === 'linux'
-export const IS_MAC: boolean = process.platform === 'darwin'
 export const IS_LINUX_X64: boolean = IS_LINUX && process.arch === 'x64'
 export const IS_LINUX_ARM64: boolean = IS_LINUX && process.arch === 'arm64'
 export const IS_WIN_X64: boolean = IS_WIN && process.arch === 'x64'
@@ -46,17 +45,15 @@ export async function downloadAsBuffer(url: string): Promise<ArrayBuffer> {
 
 export function getPlatform(platform: string, arch: string): string {
   if (!platform) {
-    return IS_MAC
-      ? 'mac'
-      : IS_LINUX_X64
-        ? 'linux'
-        : IS_WIN_X64
-          ? 'win'
-          : IS_LINUX_ARM64
-            ? 'linux-aarch64'
-            : IS_WIN_ARM64
-              ? 'winarm64'
-              : ''
+    return IS_LINUX_X64
+      ? 'linux'
+      : IS_WIN_X64
+        ? 'win'
+        : IS_LINUX_ARM64
+          ? 'linux-aarch64'
+          : IS_WIN_ARM64
+            ? 'winarm64'
+            : ''
   } else {
     if (['win', 'linux'].includes(platform) && arch === 'arm64') {
       if (platform === 'win') {
@@ -65,7 +62,7 @@ export function getPlatform(platform: string, arch: string): string {
         return 'linux-aarch64'
       }
     } else {
-      return ['mac', 'linux', 'win'].includes(platform) ? platform : ''
+      return ['linux', 'win'].includes(platform) ? platform : ''
     }
   }
 }

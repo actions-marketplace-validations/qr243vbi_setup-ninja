@@ -36,3 +36,4 @@ All the content in this repository is licensed under the MIT License.
 
 Copyright (c) 2024 Kobiton Inc.
 Copyright (c) 2019-2020 Ashutosh Varma
+Copyright (c) 2026 qr243vbi

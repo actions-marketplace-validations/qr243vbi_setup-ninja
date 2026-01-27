@@ -13,6 +13,9 @@ inputs:
   platform:
     description: Override default platform detection logic. Accepted values are [mac, linux, win]
     required: false
+  arch:
+    description: Override default architecture detection logic. Accepted values are [arm64, x64]
+    required: false
 runs:
   using: 'node20'
   main: 'dist/index.js'

@@ -32,7 +32,10 @@ async function run(): Promise<void> {
   try {
     const ninjaVersion: string = core.getInput('version', {required: false})
     const ninjaDest: string = core.getInput('dest')
-    const ninjaPlatform: string = util.getPlatform(core.getInput('platform'))
+    const ninjaPlatform: string = util.getPlatform(
+      core.getInput('platform'),
+      core.getInput('arch')
+    )
     if (!ninjaPlatform) throw Error('Unsupported Platform')
 
     const ninjaDwdUrl = `https://github.com/ninja-build/ninja/releases/download/v${ninjaVersion}/ninja-${ninjaPlatform}.zip`

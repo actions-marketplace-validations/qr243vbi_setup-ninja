@@ -37,8 +37,12 @@ async function run(): Promise<void> {
       core.getInput('arch')
     )
     if (!ninjaPlatform) throw Error('Unsupported Platform')
-
-    const ninjaDwdUrl = `https://github.com/ninja-build/ninja/releases/download/v${ninjaVersion}/ninja-${ninjaPlatform}.zip`
+    if (ninjaVersion === 'generic'){
+      ninjaVersion = util.getLatestRelease('ninja-build', 'ninja');
+    } else {
+      ninjaVersion = `v${ninjaVersion}`
+    }
+    const ninjaDwdUrl = `https://github.com/ninja-build/ninja/releases/download/${ninjaVersion}/ninja-${ninjaPlatform}.zip`
 
     let ninjaBinaryName = 'ninja'
     if (util.IS_WIN) {

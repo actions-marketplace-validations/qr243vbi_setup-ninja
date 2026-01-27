@@ -22,8 +22,8 @@ jobs:
       - name: Setup Ninja
         uses: kobiton/action-setup-ninja@master
         with:
-          # ninja version to download. Default: 1.11.1
-          version: 1.11.1
+          # ninja version to download. Default: latest ninja version (generic)
+          version: generic
         
 ```
 

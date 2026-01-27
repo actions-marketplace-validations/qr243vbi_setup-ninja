@@ -20,7 +20,7 @@ jobs:
         
     steps:
       - name: Setup Ninja
-        uses: kobiton/action-setup-ninja@master
+        uses: qr243vbi/setup-ninja@master
         with:
           # ninja version to download. Default: latest ninja version (generic)
           version: generic

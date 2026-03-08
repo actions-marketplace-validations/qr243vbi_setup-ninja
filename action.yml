@@ -1,6 +1,6 @@
-name: 'Setup Ninja'
+name: 'Setup Ninja Build'
 description: 'Setup specific version of Ninja build tool and add it to PATH'
-author: 'Ashutosh Varma & Colin Rymer'
+author: 'Ashutosh Varma & Colin Rymer & qr243vbi'
 inputs:
   version:
     description: 'Ninja version. Make sure given ninja version exists in ninja github release'
